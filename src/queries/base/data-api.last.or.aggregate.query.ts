@@ -1,4 +1,4 @@
-import { DataApiQuery } from '../../data-api.query';
+import { DataApiQuery, DataApiQueryType } from '../../data-api.query';
 import { HistoricalValue } from '../../data-api.values';
 import { TimeRange } from '../../entities';
 import { DataApiAggregateOrHistoricalQuery } from './data-api.aggregate.or.historical.query';
@@ -12,7 +12,7 @@ export class DataApiLastOrAggregateQuery extends DataApiBaseQuery {
 
   public getLast(): DataApiQuery {
     this.addValues(HistoricalValue.last, HistoricalValue.time);
-    return this.buildQuery();
+    return this.buildQuery(DataApiQueryType.LAST);
   }
 
   public withTimeRange(range: TimeRange): DataApiAggregateOrHistoricalQuery {

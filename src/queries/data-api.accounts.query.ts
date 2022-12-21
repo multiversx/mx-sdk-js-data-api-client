@@ -20,6 +20,7 @@ export class DataApiAccountsQuery extends DataApiBaseQuery {
       name: 'count24h',
       args: [],
       hasQuery: true,
-    });    return new DataApiLastOrAggregateQuery(this);
+    });
+    return new DataApiLastOrAggregateQuery(this);
   }
 }

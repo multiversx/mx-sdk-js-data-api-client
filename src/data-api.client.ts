@@ -2,6 +2,9 @@ import axios, { AxiosRequestConfig } from 'axios';
 import { DataApiClientConfig } from './entities/data-api.client.config';
 import Agent, { HttpsAgent } from 'agentkeepalive';
 import { NativeAuthSigner } from './utils/utils';
+import { DataApiQuery } from './data-api.query';
+import { DataApiAggregateResponse, DataApiHistoricalResponse, DataApiLastResponse } from './data-api.responses';
+import { DataApiResponseFormatter } from './entities/data-api.response.formatter';
 
 export class DataApiClient {
   private url: string;
@@ -40,7 +43,9 @@ export class DataApiClient {
       ...this.config,
       headers: {
         Authorization: `Bearer ${accessTokenInfo.token}`,
-        authorization: `Bearer ${accessTokenInfo.token}`,
+      },
+      validateStatus: function () {
+        return true;
       },
     };
   }
@@ -49,16 +54,20 @@ export class DataApiClient {
     try {
       const config = await this.getConfig();
       const { data } = await axios.post(this.url, payload, config);
-      return data;
+      return data?.data;
+      // TODO handle errors
     } catch (error) {
       throw error;
     }
   }
 
-  public async query(query: string, variables: Record<string, any>): Promise<any> {
-    // TODO
+  public async runQuery(query: DataApiQuery): Promise<DataApiLastResponse | DataApiAggregateResponse | DataApiHistoricalResponse[] | undefined> {
     try {
-      return await this.post({ query, variables });
+      let response = await this.post(query.toJson());
+  
+      response = DataApiResponseFormatter.formatResponse(query.responsePath, response);
+
+      return DataApiResponseFormatter.buildResponse(query.type, response);
     } catch (error) {
       // TODO
       throw error;

@@ -1,35 +1,52 @@
-import { AggregateValue, DataApiQueryBuilder, HistoricalValue, TimeRange, TimeResolution } from '../src'
+import { AggregateValue, DataApiClient, DataApiQueryBuilder, HistoricalValue, TimeRange, TimeResolution } from '../src'
+import { readFile } from 'fs/promises';
+import path from 'path';
+import { DataApiAggregateResponse, DataApiHistoricalResponse, DataApiLastResponse } from '../src/data-api.responses';
 
 // eslint-disable-next-line require-await
 async function run() {
-  const countLast = DataApiQueryBuilder
+  const signerPrivateKey = await readFile(path.join(__dirname, './example.pem'))
+    .then(buffer => buffer.toString());
+
+  const dataApiClient = new DataApiClient({
+    host: 'example-client',
+    dataApiUrl: 'https://tools.elrond.com/data-api/graphql',
+    multiversXApiUrl: 'https://api.elrond.com',
+    signerPrivateKey,
+  });
+
+  const countLastQuery = DataApiQueryBuilder
     .createAccountsQuery()
     .count()
     .getLast();
-  console.log(countLast);
+  const countLast = await dataApiClient.runQuery(countLastQuery) as DataApiLastResponse | undefined;
+  console.log('countLast:', countLast);
 
-  const countAvg = DataApiQueryBuilder
+  const countAvgQuery = DataApiQueryBuilder
     .createAccountsQuery()
     .count()
     .withTimeRange(TimeRange.MONTH)
     .getAggregate(AggregateValue.sum);
-  console.log(countAvg);
+  const countAvg = await dataApiClient.runQuery(countAvgQuery) as DataApiAggregateResponse | undefined;
+  console.log('countAvg:', countAvg);
 
-  const countMax = DataApiQueryBuilder
+  const countMaxQuery = DataApiQueryBuilder
     .createAccountsQuery()
     .count()
     .betweenDates(new Date())
     .getAggregate(AggregateValue.max);
-  console.log(countMax);
+  const countMax = await dataApiClient.runQuery(countMaxQuery) as DataApiAggregateResponse | undefined;
+  console.log('countMax:', countMax);
 
-  const countHistorical = DataApiQueryBuilder
+  const countHistoricalQuery = DataApiQueryBuilder
     .createAccountsQuery()
     .count()
-    .withTimeRange(TimeRange.MONTH)
+    .withTimeRange(TimeRange.WEEK)
     .withTimeResolution(TimeResolution.INTERVAL_DAY)
     .fillDataGaps()
     .getHistorical(HistoricalValue.last, HistoricalValue.time);
-  console.log(countHistorical);
+  const countHistorical = await dataApiClient.runQuery(countHistoricalQuery) as DataApiHistoricalResponse;
+  console.log('countHistorical:', countHistorical);
 }
 
 // eslint-disable-next-line @typescript-eslint/no-floating-promises

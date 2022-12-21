@@ -1,4 +1,4 @@
-import { DataApiQuery } from '../../data-api.query';
+import { DataApiQuery, DataApiQueryType } from '../../data-api.query';
 import { AggregateValue } from '../../data-api.values';
 import { TimeResolution } from '../../entities';
 import { DataApiBaseQuery } from './data-api.base.query';
@@ -12,7 +12,7 @@ export class DataApiAggregateOrHistoricalQuery extends DataApiBaseQuery {
 
   public getAggregate(...values: AggregateValue[]): DataApiQuery {
     this.addValues(...values);
-    return this.buildQuery();
+    return this.buildQuery(DataApiQueryType.AGGREGATE);
   }
 
   public withTimeResolution(resolution: TimeResolution): DataApiHistoricalQuery {

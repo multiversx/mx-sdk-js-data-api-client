@@ -1,4 +1,4 @@
-import { DataApiQuery } from '../../data-api.query';
+import { DataApiQuery, DataApiQueryType } from '../../data-api.query';
 import { AggregateValue, HistoricalValue } from '../../data-api.values';
 import { DataApiQueryPath, TimeRange, TimeResolution } from '../../entities';
 import prettier from 'prettier';
@@ -55,11 +55,9 @@ export class DataApiBaseQuery {
     this.values = query.values;
   }
 
-  protected buildQuery(): DataApiQuery {
+  protected buildQuery(queryType: DataApiQueryType): DataApiQuery {
     const variables = {};
-    let query = `query clientQuery {
-      ${QUERY_PLACEHOLDER}
-    }`;
+    let query = QUERY_PLACEHOLDER;
 
     for (const { name, hasQuery } of this.path) {
       const inputArgs: string[] = [];
@@ -84,7 +82,9 @@ export class DataApiBaseQuery {
 
     query = prettier.format(query, { parser: 'graphql' });
 
-    return new DataApiQuery(query, variables);
+    const responsePath = this.path.map(p => p.name);
+  
+    return new DataApiQuery(query, variables, responsePath, queryType);
   }
 
   private addQueryValues(query: string, values: (HistoricalValue | AggregateValue)[]) {

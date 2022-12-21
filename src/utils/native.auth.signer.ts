@@ -33,7 +33,7 @@ export class NativeAuthSigner {
     const userSigner = this.getUserSigner();
     const signableToken = await this.getSignableToken();
     const signerAddress = userSigner.getAddress().bech32();
-
+    
     const signableMessage = this.getSignableMessage(signerAddress, signableToken);
 
     await userSigner.sign(signableMessage);

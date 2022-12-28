@@ -1,30 +1,23 @@
 import { UserSigner } from '@elrondnetwork/erdjs-walletcore/out';
 import { SignableMessage } from '@elrondnetwork/erdjs/out';
 import { NativeAuthClient } from '@elrondnetwork/native-auth-client';
-import { NativeAuthClientConfig } from '@elrondnetwork/native-auth-client/lib/src/entities/native.auth.client.config';
 import moment from 'moment';
+import { AccessToken } from './access.token';
+import { NativeAuthSignerConfig } from './config';
 
-export class NativeAuthSignerConfig extends NativeAuthClientConfig {
-  signerPrivateKey?: string = undefined;
-}
-
-export class AccessTokenInfo {
-  token = '';
-  expiryDate: Date = new Date(0);
-}
 
 export class NativeAuthSigner {
   private readonly config: NativeAuthSignerConfig;
   private readonly nativeAuthClient: NativeAuthClient;
   private userSigner?: UserSigner;
-  private accessTokenInfo?: AccessTokenInfo;
+  private accessTokenInfo?: AccessToken;
 
   constructor(config: Partial<NativeAuthSignerConfig>) {
     this.config = Object.assign(new NativeAuthSignerConfig(), config);
     this.nativeAuthClient = new NativeAuthClient(this.config);
   }
 
-  public async getToken(): Promise<AccessTokenInfo> {
+  public async getToken(): Promise<AccessToken> {
     const currentDate = moment().add(1, 'minutes').toDate();
     if (this.accessTokenInfo && currentDate <= this.accessTokenInfo.expiryDate) {
       return this.accessTokenInfo;

@@ -1,8 +1,8 @@
-import { DataApiQuery, DataApiQueryType } from '../../data-api.query';
-import { AggregateValue, HistoricalValue } from '../../data-api.values';
-import { DataApiQueryPath, TimeRange, TimeResolution } from '../../entities';
+import { DataApiQueryPath, DataApiQueryType, TimeRange, TimeResolution } from '../../entities';
 import prettier from 'prettier';
 import moment from 'moment';
+import { AggregateValue, HistoricalValue } from '../../values';
+import { DataApiBaseQuery } from '../../queries';
 
 const QUERY_PLACEHOLDER = '%REPLACE_ME%';
 
@@ -28,7 +28,7 @@ export class QueryInput {
   }
 }
 
-export class DataApiBaseQuery {
+export class DataApiBaseQueryBuilder {
   private path: DataApiQueryPath[] = [];
   private queryInput?: QueryInput;
   private values: (HistoricalValue | AggregateValue)[] = [];
@@ -49,13 +49,13 @@ export class DataApiBaseQuery {
     this.values.push(...values);
   }
 
-  protected copyProps(query: DataApiBaseQuery) {
+  protected copyProps(query: DataApiBaseQueryBuilder) {
     this.path = query.path;
     this.queryInput = query.queryInput;
     this.values = query.values;
   }
 
-  protected buildQuery(queryType: DataApiQueryType): DataApiQuery {
+  protected buildQuery(queryType: DataApiQueryType): DataApiBaseQuery {
     const variables = {};
     let query = QUERY_PLACEHOLDER;
 
@@ -83,8 +83,8 @@ export class DataApiBaseQuery {
     query = prettier.format(query, { parser: 'graphql' });
 
     const responsePath = this.path.map(p => p.name);
-  
-    return new DataApiQuery(query, variables, responsePath, queryType);
+
+    return new DataApiBaseQuery(queryType, query, variables, responsePath);
   }
 
   private addQueryValues(query: string, values: (HistoricalValue | AggregateValue)[]) {

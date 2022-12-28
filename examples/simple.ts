@@ -1,7 +1,6 @@
 import { AggregateValue, DataApiClient, DataApiQueryBuilder, HistoricalValue, TimeRange, TimeResolution } from '../src'
 import { readFile } from 'fs/promises';
 import path from 'path';
-import { DataApiAggregateResponse, DataApiHistoricalResponse, DataApiLastResponse } from '../src/data-api.responses';
 
 // eslint-disable-next-line require-await
 async function run() {
@@ -19,24 +18,24 @@ async function run() {
     .createAccountsQuery()
     .count()
     .getLast();
-  const countLast = await dataApiClient.runQuery(countLastQuery) as DataApiLastResponse | undefined;
-  console.log('countLast:', countLast);
+  const countLast = await dataApiClient.executeLastQuery(countLastQuery);
+  console.log('countLast:', countLast?.value);
 
   const countAvgQuery = DataApiQueryBuilder
     .createAccountsQuery()
     .count()
     .withTimeRange(TimeRange.MONTH)
-    .getAggregate(AggregateValue.sum);
-  const countAvg = await dataApiClient.runQuery(countAvgQuery) as DataApiAggregateResponse | undefined;
-  console.log('countAvg:', countAvg);
+    .getAggregate(AggregateValue.avg);
+  const countAvg = await dataApiClient.executeAggregateQuery(countAvgQuery);
+  console.log('countAvg:', countAvg?.avg);
 
   const countMaxQuery = DataApiQueryBuilder
     .createAccountsQuery()
     .count()
-    .betweenDates(new Date())
+    .betweenDates(new Date(2022, 11, 25))
     .getAggregate(AggregateValue.max);
-  const countMax = await dataApiClient.runQuery(countMaxQuery) as DataApiAggregateResponse | undefined;
-  console.log('countMax:', countMax);
+  const countMax = await dataApiClient.executeAggregateQuery(countMaxQuery);
+  console.log('countMax:', countMax?.max);
 
   const countHistoricalQuery = DataApiQueryBuilder
     .createAccountsQuery()
@@ -45,8 +44,8 @@ async function run() {
     .withTimeResolution(TimeResolution.INTERVAL_DAY)
     .fillDataGaps()
     .getHistorical(HistoricalValue.last, HistoricalValue.time);
-  const countHistorical = await dataApiClient.runQuery(countHistoricalQuery) as DataApiHistoricalResponse;
-  console.log('countHistorical:', countHistorical);
+  const countHistorical = await dataApiClient.executeHistoricalQuery(countHistoricalQuery);
+  console.log('countHistorical:', countHistorical.map(x => ({ last: x.last, timestamp: x.timestamp })));
 }
 
 // eslint-disable-next-line @typescript-eslint/no-floating-promises

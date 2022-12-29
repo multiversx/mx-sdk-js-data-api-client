@@ -1,5 +1,5 @@
 {
-  "name": "@elrondnetwork/data-api-client",
+  "name": "@elrondnetwork/erdjs-data-api-client",
   "version": "0.1.0",
   "description": "Data API client",
   "main": "lib/src/index.js",
@@ -15,7 +15,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ElrondNetwork/data-api-client.git"
+    "url": "git+https://github.com/ElrondNetwork/erdjs-data-api-client.git"
   },
   "keywords": [
     "elrond",

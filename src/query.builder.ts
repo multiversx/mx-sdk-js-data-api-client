@@ -7,6 +7,7 @@ import {
   DataApiStakingQueryBuilder,
   DataApiTokensQueryBuilder,
   DataApiTransactionsQueryBuilder,
+  DataApiTransfersQueryBuilder,
   DataApiXExchangeAnalyticsQueryBuilder,
 } from './query.builders';
 
@@ -38,6 +39,10 @@ export class DataApiQueryBuilder extends DataApiBaseQuery {
 
   static createTransactionsQuery(): DataApiTransactionsQueryBuilder {
     return new DataApiTransactionsQueryBuilder();
+  }
+
+  static createTransfersQuery(): DataApiTransfersQueryBuilder {
+    return new DataApiTransfersQueryBuilder();
   }
 
   static createXExchangeAnalyticsQuery(): DataApiXExchangeAnalyticsQueryBuilder {

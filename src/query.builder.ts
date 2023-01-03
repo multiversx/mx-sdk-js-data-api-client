@@ -2,6 +2,7 @@ import { DataApiBaseQuery } from './queries';
 import {
   DataApiAccountsQueryBuilder,
   DataApiContractsQueryBuilder,
+  DataApiESDTsQueryBuilder,
   DataApiNetworkQueryBuilder,
   DataApiNFTsQueryBuilder,
   DataApiStakingQueryBuilder,
@@ -19,6 +20,10 @@ export class DataApiQueryBuilder extends DataApiBaseQuery {
 
   static createContractsQuery(): DataApiContractsQueryBuilder {
     return new DataApiContractsQueryBuilder();
+  }
+
+  static createESDTsQuery(): DataApiESDTsQueryBuilder {
+    return new DataApiESDTsQueryBuilder();
   }
 
   static createNetworkQuery(): DataApiNetworkQueryBuilder {

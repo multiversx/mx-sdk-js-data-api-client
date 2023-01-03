@@ -1,5 +1,6 @@
 export * from './accounts.query.builder';
 export * from './contracts.query.builder';
+export * from './esdts.query.builder';
 export * from './network.query.builder';
 export * from './nfts.query.builder';
 export * from './staking.query.builder';

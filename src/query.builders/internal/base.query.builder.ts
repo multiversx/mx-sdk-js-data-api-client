@@ -56,12 +56,19 @@ export class DataApiBaseQueryBuilder {
   }
 
   protected buildQuery(queryType: DataApiQueryType): DataApiBaseQuery {
-    const variables = {};
+    const variables: Record<string, any> = {};
     let query = QUERY_PLACEHOLDER;
 
-    for (const { name, hasQuery } of this.path) {
+    const argsDefinition = [];
+
+    for (const { name, args, hasQuery } of this.path) {
       const inputArgs: string[] = [];
-      // TODO args;
+
+      for (const arg of args) {
+        variables[arg.name] = arg.value;
+        inputArgs.push(`${arg.name}: $${arg.name}`);
+        argsDefinition.push(`$${arg.name}: ${arg.type}`);
+      }
 
       if (hasQuery && this.queryInput) {
         const queryInput = this.queryInput.toGraphQlInput();
@@ -77,8 +84,10 @@ export class DataApiBaseQueryBuilder {
 
     query = this.addQueryValues(query, this.values);
 
+    const argsDefinitionString = argsDefinition.length > 0 ? `(${argsDefinition.join()})` : '';
+
     const queryId = moment().unix();
-    query = `query clientQuery_${queryId} { ${query} }`;
+    query = `query clientQuery_${queryId}${argsDefinitionString} { ${query} }`;
 
     query = prettier.format(query, { parser: 'graphql' });
 

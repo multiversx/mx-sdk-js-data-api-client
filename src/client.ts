@@ -70,7 +70,7 @@ export class DataApiClient {
     const httpsAgent = new HttpsAgent(keepAliveOptions);
 
     this.config = {
-      timeout: config.proxyTimeout ?? 10000, // TODO
+      timeout: config.proxyTimeout ?? 10000,
       httpAgent: config.keepAlive ? httpAgent : null,
       httpsAgent: config.keepAlive ? httpsAgent : null,
     };

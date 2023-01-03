@@ -1,1 +1,4 @@
-example.pem
+*
+!.gitignore
+!dex.ts
+!simple.ts

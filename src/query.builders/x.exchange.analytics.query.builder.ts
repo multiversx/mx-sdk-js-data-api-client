@@ -10,16 +10,8 @@ export class DataApiXExchangeAnalyticsQueryBuilder extends DataApiBaseQueryBuild
     this.addToPath({
       name: 'metric',
       args: [
-        {
-          name: 'series',
-          type: 'String!',
-          value: series,
-        },
-        {
-          name: 'metric',
-          type: 'String!',
-          value: metric,
-        },
+        { name: 'series', type: 'String!', value: series },
+        { name: 'metric', type: 'String!', value: metric },
       ],
       hasQuery: true,
     });

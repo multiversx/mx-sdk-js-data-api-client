@@ -8,3 +8,4 @@ export * from './tokens.query.builder';
 export * from './transactions.query.builder';
 export * from './transfers.query.builder';
 export * from './x.exchange.analytics.query.builder';
+export * from './xmex.query.builder';

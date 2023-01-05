@@ -1,4 +1,4 @@
-import { EsdtType } from 'src/entities';
+import { EsdtType } from '../entities';
 import { DataApiBaseQueryBuilder, DataApiLastOrAggregateQueryBuilder } from './internal';
 
 export class DataApiESDTsQueryBuilder extends DataApiBaseQueryBuilder {

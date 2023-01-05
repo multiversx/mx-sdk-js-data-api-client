@@ -1,6 +1,6 @@
 {
   "name": "@elrondnetwork/erdjs-data-api-client",
-  "version": "0.3.2",
+  "version": "0.3.3",
   "description": "MultiversX Data API client",
   "main": "lib/src/index.js",
   "types": "lib/src/index.d.ts",
@@ -45,6 +45,7 @@
     "@elrondnetwork/native-auth-client": "^0.1.4",
     "agentkeepalive": "^4.2.1",
     "axios": "^0.27.2",
+    "bignumber.js": "^9.1.1",
     "moment": "^2.29.4",
     "prettier": "^2.8.1"
   }

@@ -3,7 +3,7 @@ import { DataApiBaseQueryBuilder, DataApiLastOrAggregateQueryBuilder } from './i
 export class DataApiXExchangeAnalyticsQueryBuilder extends DataApiBaseQueryBuilder {
   constructor() {
     super();
-    this.addToPath({ name: 'maiar_exchange_analytics', args: [] });
+    this.addToPath({ name: 'xExchangeAnalytics', args: [] });
   }
 
   public metric(series: string, metric: string): DataApiLastOrAggregateQueryBuilder {

@@ -49,8 +49,12 @@ export class DataApiClient {
     try {
       const config = await this.getConfig();
       const { data } = await axios.post(this.url, payload, config);
-      return data?.data;
-      // TODO handle errors
+      
+      if(data.errors) {
+        throw data.errors;
+      }
+      
+      return data.data;
     } catch (error) {
       throw error;
     }

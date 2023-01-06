@@ -1,6 +1,6 @@
 {
   "name": "@elrondnetwork/erdjs-data-api-client",
-  "version": "0.3.3",
+  "version": "0.3.4",
   "description": "MultiversX Data API client",
   "main": "lib/src/index.js",
   "types": "lib/src/index.d.ts",

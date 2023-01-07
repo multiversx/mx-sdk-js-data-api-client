@@ -53,4 +53,58 @@ export class DataApiXMEXQueryBuilder extends DataApiBaseQueryBuilder {
     this.addToPath({ name: 'reducedAmount', args: [], hasQuery: true });
     return new DataApiLastOrAggregateQueryBuilder(this);
   }
+
+  public lockTokensCount(): DataApiLastOrAggregateQueryBuilder {
+    this.addToPath({ name: 'lockTokens', args: [] });
+    this.addToPath({ name: 'count', args: [], hasQuery: true });
+    return new DataApiLastOrAggregateQueryBuilder(this);
+  }
+
+  public lockTokensTotalAmount(): DataApiLastOrAggregateQueryBuilder {
+    this.addToPath({ name: 'lockTokens', args: [] });
+    this.addToPath({ name: 'totalAmount', args: [], hasQuery: true });
+    return new DataApiLastOrAggregateQueryBuilder(this);
+  }
+
+  public lockTokensExtendedAmount(): DataApiLastOrAggregateQueryBuilder {
+    this.addToPath({ name: 'lockTokens', args: [] });
+    this.addToPath({ name: 'extendedAmount', args: [], hasQuery: true });
+    return new DataApiLastOrAggregateQueryBuilder(this);
+  }
+
+  public migrateOldTokensCount(): DataApiLastOrAggregateQueryBuilder {
+    this.addToPath({ name: 'migrateOldTokens', args: [] });
+    this.addToPath({ name: 'count', args: [], hasQuery: true });
+    return new DataApiLastOrAggregateQueryBuilder(this);
+  }
+
+  public migrateOldTokensTotalAmount(): DataApiLastOrAggregateQueryBuilder {
+    this.addToPath({ name: 'migrateOldTokens', args: [] });
+    this.addToPath({ name: 'totalAmount', args: [], hasQuery: true });
+    return new DataApiLastOrAggregateQueryBuilder(this);
+  }
+  
+  public lkmexCount(): DataApiLastOrAggregateQueryBuilder {
+    this.addToPath({ name: 'LKMEX', args: [] });
+    this.addToPath({ name: 'count', args: [], hasQuery: true });
+    return new DataApiLastOrAggregateQueryBuilder(this);
+  }
+  
+  public lkmexTotalSupply(): DataApiLastOrAggregateQueryBuilder {
+    this.addToPath({ name: 'LKMEX', args: [] });
+    this.addToPath({ name: 'totalSupply', args: [], hasQuery: true });
+    return new DataApiLastOrAggregateQueryBuilder(this);
+  }
+
+  public xmexCount(): DataApiLastOrAggregateQueryBuilder {
+    this.addToPath({ name: 'XMEX', args: [] });
+    this.addToPath({ name: 'count', args: [], hasQuery: true });
+    return new DataApiLastOrAggregateQueryBuilder(this);
+  }
+  
+  public xmexTotalSupply(): DataApiLastOrAggregateQueryBuilder {
+    this.addToPath({ name: 'XMEX', args: [] });
+    this.addToPath({ name: 'totalSupply', args: [], hasQuery: true });
+    return new DataApiLastOrAggregateQueryBuilder(this);
+  }
 }

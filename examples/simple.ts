@@ -9,8 +9,8 @@ async function run() {
 
   const dataApiClient = new DataApiClient({
     host: 'example-client',
-    dataApiUrl: 'https://tools.elrond.com/data-api/graphql',
-    multiversXApiUrl: 'https://api.elrond.com',
+    dataApiUrl: 'https://tools.multiversx.com/data-api/graphql',
+    multiversXApiUrl: 'https://api.multiversx.com',
     signerPrivateKey,
   });
 

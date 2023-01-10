@@ -92,8 +92,8 @@ async function run() {
 
   dataApiClient = new DataApiClient({
     host: 'example-client',
-    dataApiUrl: 'https://devnet-tools.elrond.com/data-api/graphql',
-    multiversXApiUrl: 'https://devnet-api.elrond.com',
+    dataApiUrl: 'https://devnet-tools.multiversx.com/data-api/graphql',
+    multiversXApiUrl: 'https://devnet-api.multiversx.com',
     signerPrivateKey,
   });
 

@@ -1,5 +1,5 @@
-import { UserSigner } from '@elrondnetwork/erdjs-walletcore/out';
-import { SignableMessage } from '@elrondnetwork/erdjs/out';
+import { UserSigner } from '@multiversx/erdjs-walletcore/out';
+import { SignableMessage } from '@multiversx/erdjs/out';
 import { NativeAuthClient } from '@elrondnetwork/native-auth-client';
 import moment from 'moment';
 import { AccessToken } from './access.token';

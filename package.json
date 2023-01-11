@@ -40,8 +40,8 @@
     "typescript": "^4.3.5"
   },
   "dependencies": {
-    "@multiversx/erdjs": "^11.1.3",
-    "@multiversx/erdjs-walletcore": "^2.1.1",
+    "@multiversx/sdk-core": "^11.1.3",
+    "@multiversx/sdk-wallet": "^2.1.1",
     "@elrondnetwork/native-auth-client": "^0.1.4",
     "agentkeepalive": "^4.2.1",
     "axios": "^0.27.2",

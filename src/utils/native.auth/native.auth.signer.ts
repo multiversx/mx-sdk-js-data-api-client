@@ -1,6 +1,6 @@
-import { UserSigner } from '@multiversx/erdjs-walletcore/out';
-import { SignableMessage } from '@multiversx/erdjs/out';
-import { NativeAuthClient } from '@elrondnetwork/native-auth-client';
+import { SignableMessage } from '@multiversx/sdk-core/out';
+import { NativeAuthClient } from '@multiversx/sdk-native-auth-client';
+import { UserSigner } from '@multiversx/sdk-wallet/out';
 import moment from 'moment';
 import { AccessToken } from './access.token';
 import { NativeAuthSignerConfig } from './config';

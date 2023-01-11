@@ -6,12 +6,12 @@ export class DataApiXExchangeAnalyticsQueryBuilder extends DataApiBaseQueryBuild
     this.addToPath({ name: 'xExchangeAnalytics', args: [] });
   }
 
-  public metric(series: string, metric: string): DataApiLastOrAggregateQueryBuilder {
+  public metric(series: string, key: string): DataApiLastOrAggregateQueryBuilder {
     this.addToPath({
       name: 'metric',
       args: [
         { name: 'series', type: 'String!', value: series },
-        { name: 'metric', type: 'String!', value: metric },
+        { name: 'key', type: 'String!', value: key },
       ],
       hasQuery: true,
     });

@@ -15,7 +15,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/multiversx/mx-sdk-erdjs-data-api-client.git"
+    "url": "git+https://github.com/multiversx/mx-sdk-js-data-api-client.git"
   },
   "keywords": [
     "multiversx",

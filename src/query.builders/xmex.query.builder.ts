@@ -30,6 +30,24 @@ export class DataApiXMEXQueryBuilder extends DataApiBaseQueryBuilder {
     return new DataApiLastOrAggregateQueryBuilder(this);
   }
 
+  public unlockAssetsCount(): DataApiLastOrAggregateQueryBuilder {
+    this.addToPath({ name: 'unlockAssets', args: [] });
+    this.addToPath({ name: 'count', args: [], hasQuery: true });
+    return new DataApiLastOrAggregateQueryBuilder(this);
+  }
+
+  public unlockAssetsTotalAmount(): DataApiLastOrAggregateQueryBuilder {
+    this.addToPath({ name: 'unlockAssets', args: [] });
+    this.addToPath({ name: 'totalAmount', args: [], hasQuery: true });
+    return new DataApiLastOrAggregateQueryBuilder(this);
+  }
+
+  public unlockAssetsTotalUnlockedAmount(): DataApiLastOrAggregateQueryBuilder {
+    this.addToPath({name: 'unlockAssets', args: []});
+    this.addToPath({name: 'totalUnlockedAmount', args: [], hasQuery: true});
+    return new DataApiLastOrAggregateQueryBuilder(this);
+  }
+
   public reduceLockPeriodCount(): DataApiLastOrAggregateQueryBuilder {
     this.addToPath({ name: 'reduceLockPeriod', args: [] });
     this.addToPath({ name: 'count', args: [], hasQuery: true });

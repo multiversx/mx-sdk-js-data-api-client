@@ -13,6 +13,7 @@ export class QueryInput {
   end_date?: string;
   date?: string;
   fill_data_gaps?: boolean;
+  fill_data_gaps_skip_null_values?: boolean;
 
   public toGraphQlInput() {
     let query = `query: {
@@ -22,6 +23,7 @@ export class QueryInput {
       ${this.end_date ? `end_date: "${moment(this.end_date).format('yyyy-MM-DD HH:mm:ss')}"` : ''}
       ${this.date ? `date: "${moment(this.date).format('yyyy-MM-DD')}"` : ''}
       ${this.fill_data_gaps ? `fill_data_gaps: ${this.fill_data_gaps}` : ''}
+      ${this.fill_data_gaps_skip_null_values ? `fill_data_gaps_skip_null_values: ${this.fill_data_gaps}` : ''}
     }`;
     query = query.replace(/^\s*\n/gm, '');
     return query;

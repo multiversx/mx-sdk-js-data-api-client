@@ -1,4 +1,4 @@
-import { DataApiQueryType } from '../../entities';
+import { DataApiQueryType, FillDataGapsOptions } from '../../entities';
 import { DataApiHistoricalQuery } from '../../queries';
 import { HistoricalValue } from '../../values';
 import { DataApiBaseQueryBuilder } from './base.query.builder';
@@ -9,8 +9,13 @@ export class DataApiHistoricalQueryBuilder extends DataApiBaseQueryBuilder {
     this.copyProps(query);
   }
 
-  public fillDataGaps(): DataApiHistoricalQueryBuilder {
+  public fillDataGaps(options?: FillDataGapsOptions): DataApiHistoricalQueryBuilder {
     this.addOption('fill_data_gaps', true);
+
+    if(options?.skipFirstNullValues) {
+      this.addOption('fill_data_gaps_skip_null_values', true);
+    }
+
     return this;
   }
 

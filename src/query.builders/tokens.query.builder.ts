@@ -1,4 +1,4 @@
-import { DataApiBaseQueryBuilder, DataApiLastOrAggregateQueryBuilder } from './internal';
+import { DataApiBaseQueryBuilder, DataApiFirstLastOrAggregateQueryBuilder } from './internal';
 
 export class DataApiTokensQueryBuilder extends DataApiBaseQueryBuilder {
   constructor() {
@@ -6,8 +6,8 @@ export class DataApiTokensQueryBuilder extends DataApiBaseQueryBuilder {
     this.addToPath({ name: 'tokens', args: [] });
   }
 
-  public dailyNumberOfTokenTransfers(): DataApiLastOrAggregateQueryBuilder {
+  public dailyNumberOfTokenTransfers(): DataApiFirstLastOrAggregateQueryBuilder {
     this.addToPath({ name: 'dailyNumberOfTokenTransfers', args: [], hasQuery: true });
-    return new DataApiLastOrAggregateQueryBuilder(this);
+    return new DataApiFirstLastOrAggregateQueryBuilder(this);
   }
 }

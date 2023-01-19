@@ -1,4 +1,4 @@
-import { DataApiBaseQueryBuilder, DataApiLastOrAggregateQueryBuilder } from './internal';
+import { DataApiBaseQueryBuilder, DataApiFirstLastOrAggregateQueryBuilder } from './internal';
 
 export class DataApiXMEXQueryBuilder extends DataApiBaseQueryBuilder {
   constructor() {
@@ -6,123 +6,123 @@ export class DataApiXMEXQueryBuilder extends DataApiBaseQueryBuilder {
     this.addToPath({ name: 'xmex', args: [] });
   }
 
-  public unlockEarlyCount(): DataApiLastOrAggregateQueryBuilder {
+  public unlockEarlyCount(): DataApiFirstLastOrAggregateQueryBuilder {
     this.addToPath({ name: 'unlockEarly', args: [] });
     this.addToPath({ name: 'count', args: [], hasQuery: true });
-    return new DataApiLastOrAggregateQueryBuilder(this);
+    return new DataApiFirstLastOrAggregateQueryBuilder(this);
   }
 
-  public unlockEarlyTotalAmount(): DataApiLastOrAggregateQueryBuilder {
+  public unlockEarlyTotalAmount(): DataApiFirstLastOrAggregateQueryBuilder {
     this.addToPath({ name: 'unlockEarly', args: [] });
     this.addToPath({ name: 'totalAmount', args: [], hasQuery: true });
-    return new DataApiLastOrAggregateQueryBuilder(this);
+    return new DataApiFirstLastOrAggregateQueryBuilder(this);
   }
 
-  public unlockEarlyUnlockableAmount(): DataApiLastOrAggregateQueryBuilder {
+  public unlockEarlyUnlockableAmount(): DataApiFirstLastOrAggregateQueryBuilder {
     this.addToPath({ name: 'unlockEarly', args: [] });
     this.addToPath({ name: 'unlockableAmount', args: [], hasQuery: true });
-    return new DataApiLastOrAggregateQueryBuilder(this);
+    return new DataApiFirstLastOrAggregateQueryBuilder(this);
   }
 
-  public unlockEarlyToBeBurnedAmount(): DataApiLastOrAggregateQueryBuilder {
+  public unlockEarlyToBeBurnedAmount(): DataApiFirstLastOrAggregateQueryBuilder {
     this.addToPath({ name: 'unlockEarly', args: [] });
     this.addToPath({ name: 'toBeBurnedAmount', args: [], hasQuery: true });
-    return new DataApiLastOrAggregateQueryBuilder(this);
+    return new DataApiFirstLastOrAggregateQueryBuilder(this);
   }
 
-  public unlockAssetsCount(): DataApiLastOrAggregateQueryBuilder {
+  public unlockAssetsCount(): DataApiFirstLastOrAggregateQueryBuilder {
     this.addToPath({ name: 'unlockAssets', args: [] });
     this.addToPath({ name: 'count', args: [], hasQuery: true });
-    return new DataApiLastOrAggregateQueryBuilder(this);
+    return new DataApiFirstLastOrAggregateQueryBuilder(this);
   }
 
-  public unlockAssetsTotalAmount(): DataApiLastOrAggregateQueryBuilder {
+  public unlockAssetsTotalAmount(): DataApiFirstLastOrAggregateQueryBuilder {
     this.addToPath({ name: 'unlockAssets', args: [] });
     this.addToPath({ name: 'totalAmount', args: [], hasQuery: true });
-    return new DataApiLastOrAggregateQueryBuilder(this);
+    return new DataApiFirstLastOrAggregateQueryBuilder(this);
   }
 
-  public unlockAssetsTotalUnlockedAmount(): DataApiLastOrAggregateQueryBuilder {
+  public unlockAssetsTotalUnlockedAmount(): DataApiFirstLastOrAggregateQueryBuilder {
     this.addToPath({name: 'unlockAssets', args: []});
     this.addToPath({name: 'totalUnlockedAmount', args: [], hasQuery: true});
-    return new DataApiLastOrAggregateQueryBuilder(this);
+    return new DataApiFirstLastOrAggregateQueryBuilder(this);
   }
 
-  public reduceLockPeriodCount(): DataApiLastOrAggregateQueryBuilder {
+  public reduceLockPeriodCount(): DataApiFirstLastOrAggregateQueryBuilder {
     this.addToPath({ name: 'reduceLockPeriod', args: [] });
     this.addToPath({ name: 'count', args: [], hasQuery: true });
-    return new DataApiLastOrAggregateQueryBuilder(this);
+    return new DataApiFirstLastOrAggregateQueryBuilder(this);
   }
 
-  public reduceLockPeriodTotalAmount(): DataApiLastOrAggregateQueryBuilder {
+  public reduceLockPeriodTotalAmount(): DataApiFirstLastOrAggregateQueryBuilder {
     this.addToPath({ name: 'reduceLockPeriod', args: [] });
     this.addToPath({ name: 'totalAmount', args: [], hasQuery: true });
-    return new DataApiLastOrAggregateQueryBuilder(this);
+    return new DataApiFirstLastOrAggregateQueryBuilder(this);
   }
 
-  public reduceLockPeriodBurnedAmount(): DataApiLastOrAggregateQueryBuilder {
+  public reduceLockPeriodBurnedAmount(): DataApiFirstLastOrAggregateQueryBuilder {
     this.addToPath({ name: 'reduceLockPeriod', args: [] });
     this.addToPath({ name: 'burnedAmount', args: [], hasQuery: true });
-    return new DataApiLastOrAggregateQueryBuilder(this);
+    return new DataApiFirstLastOrAggregateQueryBuilder(this);
   }
 
-  public reduceLockPeriodReducedAmount(): DataApiLastOrAggregateQueryBuilder {
+  public reduceLockPeriodReducedAmount(): DataApiFirstLastOrAggregateQueryBuilder {
     this.addToPath({ name: 'reduceLockPeriod', args: [] });
     this.addToPath({ name: 'reducedAmount', args: [], hasQuery: true });
-    return new DataApiLastOrAggregateQueryBuilder(this);
+    return new DataApiFirstLastOrAggregateQueryBuilder(this);
   }
 
-  public lockTokensCount(): DataApiLastOrAggregateQueryBuilder {
+  public lockTokensCount(): DataApiFirstLastOrAggregateQueryBuilder {
     this.addToPath({ name: 'lockTokens', args: [] });
     this.addToPath({ name: 'count', args: [], hasQuery: true });
-    return new DataApiLastOrAggregateQueryBuilder(this);
+    return new DataApiFirstLastOrAggregateQueryBuilder(this);
   }
 
-  public lockTokensTotalAmount(): DataApiLastOrAggregateQueryBuilder {
+  public lockTokensTotalAmount(): DataApiFirstLastOrAggregateQueryBuilder {
     this.addToPath({ name: 'lockTokens', args: [] });
     this.addToPath({ name: 'totalAmount', args: [], hasQuery: true });
-    return new DataApiLastOrAggregateQueryBuilder(this);
+    return new DataApiFirstLastOrAggregateQueryBuilder(this);
   }
 
-  public lockTokensExtendedAmount(): DataApiLastOrAggregateQueryBuilder {
+  public lockTokensExtendedAmount(): DataApiFirstLastOrAggregateQueryBuilder {
     this.addToPath({ name: 'lockTokens', args: [] });
     this.addToPath({ name: 'extendedAmount', args: [], hasQuery: true });
-    return new DataApiLastOrAggregateQueryBuilder(this);
+    return new DataApiFirstLastOrAggregateQueryBuilder(this);
   }
 
-  public migrateOldTokensCount(): DataApiLastOrAggregateQueryBuilder {
+  public migrateOldTokensCount(): DataApiFirstLastOrAggregateQueryBuilder {
     this.addToPath({ name: 'migrateOldTokens', args: [] });
     this.addToPath({ name: 'count', args: [], hasQuery: true });
-    return new DataApiLastOrAggregateQueryBuilder(this);
+    return new DataApiFirstLastOrAggregateQueryBuilder(this);
   }
 
-  public migrateOldTokensTotalAmount(): DataApiLastOrAggregateQueryBuilder {
+  public migrateOldTokensTotalAmount(): DataApiFirstLastOrAggregateQueryBuilder {
     this.addToPath({ name: 'migrateOldTokens', args: [] });
     this.addToPath({ name: 'totalAmount', args: [], hasQuery: true });
-    return new DataApiLastOrAggregateQueryBuilder(this);
+    return new DataApiFirstLastOrAggregateQueryBuilder(this);
   }
   
-  public lkmexCount(): DataApiLastOrAggregateQueryBuilder {
+  public lkmexCount(): DataApiFirstLastOrAggregateQueryBuilder {
     this.addToPath({ name: 'LKMEX', args: [] });
     this.addToPath({ name: 'count', args: [], hasQuery: true });
-    return new DataApiLastOrAggregateQueryBuilder(this);
+    return new DataApiFirstLastOrAggregateQueryBuilder(this);
   }
   
-  public lkmexTotalSupply(): DataApiLastOrAggregateQueryBuilder {
+  public lkmexTotalSupply(): DataApiFirstLastOrAggregateQueryBuilder {
     this.addToPath({ name: 'LKMEX', args: [] });
     this.addToPath({ name: 'totalSupply', args: [], hasQuery: true });
-    return new DataApiLastOrAggregateQueryBuilder(this);
+    return new DataApiFirstLastOrAggregateQueryBuilder(this);
   }
 
-  public xmexCount(): DataApiLastOrAggregateQueryBuilder {
+  public xmexCount(): DataApiFirstLastOrAggregateQueryBuilder {
     this.addToPath({ name: 'XMEX', args: [] });
     this.addToPath({ name: 'count', args: [], hasQuery: true });
-    return new DataApiLastOrAggregateQueryBuilder(this);
+    return new DataApiFirstLastOrAggregateQueryBuilder(this);
   }
   
-  public xmexTotalSupply(): DataApiLastOrAggregateQueryBuilder {
+  public xmexTotalSupply(): DataApiFirstLastOrAggregateQueryBuilder {
     this.addToPath({ name: 'XMEX', args: [] });
     this.addToPath({ name: 'totalSupply', args: [], hasQuery: true });
-    return new DataApiLastOrAggregateQueryBuilder(this);
+    return new DataApiFirstLastOrAggregateQueryBuilder(this);
   }
 }

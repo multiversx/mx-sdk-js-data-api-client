@@ -1,4 +1,4 @@
-import { DataApiBaseQueryBuilder, DataApiLastOrAggregateQueryBuilder } from './internal';
+import { DataApiBaseQueryBuilder, DataApiFirstLastOrAggregateQueryBuilder } from './internal';
 
 export class DataApiQuotesQueryBuilder extends DataApiBaseQueryBuilder {
   constructor() {
@@ -6,7 +6,7 @@ export class DataApiQuotesQueryBuilder extends DataApiBaseQueryBuilder {
     this.addToPath({ name: 'quotes', args: [] });
   }
 
-  public historicalPrice(identifier: string): DataApiLastOrAggregateQueryBuilder {
+  public historicalPrice(identifier: string): DataApiFirstLastOrAggregateQueryBuilder {
     this.addToPath({
       name: 'historical',
       args: [
@@ -16,6 +16,6 @@ export class DataApiQuotesQueryBuilder extends DataApiBaseQueryBuilder {
     });
     this.addToPath({ name: 'price', args: [], hasQuery: true });
 
-    return new DataApiLastOrAggregateQueryBuilder(this);
+    return new DataApiFirstLastOrAggregateQueryBuilder(this);
   }
 }

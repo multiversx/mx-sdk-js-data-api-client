@@ -1,9 +1,8 @@
 import axios, { AxiosRequestConfig } from 'axios';
 import Agent, { HttpsAgent } from 'agentkeepalive';
 import { NativeAuthSigner, DataApiResponseFormatter, AccessToken } from './utils';
-import { DataApiAggregateResponse, DataApiHistoricalResponse, DataApiLastResponse } from './responses';
-import { DataApiAggregateQuery, DataApiHistoricalQuery, DataApiLastQuery, DataApiBaseQuery } from './queries';
-import {  } from './utils';
+import { DataApiAggregateResponse, DataApiHistoricalResponse, DataApiValueResponse } from './responses';
+import { DataApiAggregateQuery, DataApiHistoricalQuery, DataApiFirstOrLastQuery, DataApiBaseQuery } from './queries';
 import { DataApiClientConfig } from './entities';
 
 export class DataApiClient {
@@ -15,9 +14,9 @@ export class DataApiClient {
     this.initialize(config);
   }
 
-  public async executeLastQuery(query: DataApiLastQuery): Promise<DataApiLastResponse | undefined> {
+  public async executeValueQuery(query: DataApiFirstOrLastQuery): Promise<DataApiValueResponse | undefined> {
     return await this.executeQuery(query)
-      .then(DataApiResponseFormatter.buildLastResponse);
+      .then(DataApiResponseFormatter.buildFirstOrLastResponse);
   }
 
   public async executeAggregateQuery(query: DataApiAggregateQuery): Promise<DataApiAggregateResponse | undefined> {
@@ -30,7 +29,7 @@ export class DataApiClient {
       .then(DataApiResponseFormatter.buildHistoricalResponse);
   }
 
-  private async executeQuery(query: DataApiBaseQuery): Promise<DataApiLastResponse | DataApiAggregateResponse | DataApiHistoricalResponse[] | undefined> {
+  private async executeQuery(query: DataApiBaseQuery): Promise<DataApiValueResponse | DataApiAggregateResponse | DataApiHistoricalResponse[] | undefined> {
     const response = await this.executeRawQuery(query.toJson());
     return DataApiResponseFormatter.formatResponse(query.responsePath, response);
   }
@@ -49,7 +48,7 @@ export class DataApiClient {
     try {
       const config = await this.getConfig();
       const { data } = await axios.post(this.url, payload, config);
-      
+
       if(data.errors) {
         throw data.errors;
       }

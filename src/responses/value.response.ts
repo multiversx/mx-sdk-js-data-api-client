@@ -1,4 +1,4 @@
-export interface DataApiLastResponse {
+export interface DataApiValueResponse {
   value: string;
   timestamp: number;
 }

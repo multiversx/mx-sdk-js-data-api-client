@@ -1,4 +1,4 @@
-import { DataApiBaseQueryBuilder, DataApiLastOrAggregateQueryBuilder } from './internal';
+import { DataApiBaseQueryBuilder, DataApiFirstLastOrAggregateQueryBuilder } from './internal';
 
 export class DataApiNetworkQueryBuilder extends DataApiBaseQueryBuilder {
   constructor() {
@@ -6,45 +6,45 @@ export class DataApiNetworkQueryBuilder extends DataApiBaseQueryBuilder {
     this.addToPath({ name: 'network', args: [] });
   }
 
-  public blocksCount(): DataApiLastOrAggregateQueryBuilder {
+  public blocksCount(): DataApiFirstLastOrAggregateQueryBuilder {
     this.addToPath({ name: 'blocks', args: [] });
     this.addToPath({ name: 'count', args: [], hasQuery: true });
-    return new DataApiLastOrAggregateQueryBuilder(this);
+    return new DataApiFirstLastOrAggregateQueryBuilder(this);
   }
 
-  public blocksCount24h(): DataApiLastOrAggregateQueryBuilder {
+  public blocksCount24h(): DataApiFirstLastOrAggregateQueryBuilder {
     this.addToPath({ name: 'blocks', args: [] });
     this.addToPath({ name: 'count24h', args: [], hasQuery: true });
-    return new DataApiLastOrAggregateQueryBuilder(this);
+    return new DataApiFirstLastOrAggregateQueryBuilder(this);
   }
 
-  public developerRewards(): DataApiLastOrAggregateQueryBuilder {
+  public developerRewards(): DataApiFirstLastOrAggregateQueryBuilder {
     this.addToPath({ name: 'developer', args: [] });
     this.addToPath({ name: 'rewards', args: [], hasQuery: true });
-    return new DataApiLastOrAggregateQueryBuilder(this);
+    return new DataApiFirstLastOrAggregateQueryBuilder(this);
   }
 
-  public inflation(): DataApiLastOrAggregateQueryBuilder {
+  public inflation(): DataApiFirstLastOrAggregateQueryBuilder {
     this.addToPath({ name: 'economics', args: [] });
     this.addToPath({ name: 'inflation', args: [], hasQuery: true });
-    return new DataApiLastOrAggregateQueryBuilder(this);
+    return new DataApiFirstLastOrAggregateQueryBuilder(this);
   }
 
-  public APR(): DataApiLastOrAggregateQueryBuilder {
+  public APR(): DataApiFirstLastOrAggregateQueryBuilder {
     this.addToPath({ name: 'economics', args: [] });
     this.addToPath({ name: 'APR', args: [], hasQuery: true });
-    return new DataApiLastOrAggregateQueryBuilder(this);
+    return new DataApiFirstLastOrAggregateQueryBuilder(this);
   }
 
-  public baseAPR(): DataApiLastOrAggregateQueryBuilder {
+  public baseAPR(): DataApiFirstLastOrAggregateQueryBuilder {
     this.addToPath({ name: 'economics', args: [] });
     this.addToPath({ name: 'baseAPR', args: [], hasQuery: true });
-    return new DataApiLastOrAggregateQueryBuilder(this);
+    return new DataApiFirstLastOrAggregateQueryBuilder(this);
   }
 
-  public topUpAPR(): DataApiLastOrAggregateQueryBuilder {
+  public topUpAPR(): DataApiFirstLastOrAggregateQueryBuilder {
     this.addToPath({ name: 'economics', args: [] });
     this.addToPath({ name: 'topUpAPR', args: [], hasQuery: true });
-    return new DataApiLastOrAggregateQueryBuilder(this);
+    return new DataApiFirstLastOrAggregateQueryBuilder(this);
   }
 }

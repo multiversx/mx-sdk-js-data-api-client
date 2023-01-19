@@ -1,4 +1,4 @@
-import { DataApiBaseQueryBuilder, DataApiLastOrAggregateQueryBuilder } from './internal';
+import { DataApiBaseQueryBuilder, DataApiFirstLastOrAggregateQueryBuilder } from './internal';
 
 export class DataApiTransfersQueryBuilder extends DataApiBaseQueryBuilder {
   constructor() {
@@ -6,23 +6,23 @@ export class DataApiTransfersQueryBuilder extends DataApiBaseQueryBuilder {
     this.addToPath({ name: 'transfers', args: [] });
   }
 
-  public addressToAddress(): DataApiLastOrAggregateQueryBuilder {
+  public addressToAddress(): DataApiFirstLastOrAggregateQueryBuilder {
     this.addToPath({ name: 'addressToAddress', args: [], hasQuery: true });
-    return new DataApiLastOrAggregateQueryBuilder(this);
+    return new DataApiFirstLastOrAggregateQueryBuilder(this);
   }
 
-  public addressToContract(): DataApiLastOrAggregateQueryBuilder {
+  public addressToContract(): DataApiFirstLastOrAggregateQueryBuilder {
     this.addToPath({ name: 'addressToContract', args: [], hasQuery: true });
-    return new DataApiLastOrAggregateQueryBuilder(this);
+    return new DataApiFirstLastOrAggregateQueryBuilder(this);
   }
 
-  public contractToAddress(): DataApiLastOrAggregateQueryBuilder {
+  public contractToAddress(): DataApiFirstLastOrAggregateQueryBuilder {
     this.addToPath({ name: 'contractToAddress', args: [], hasQuery: true });
-    return new DataApiLastOrAggregateQueryBuilder(this);
+    return new DataApiFirstLastOrAggregateQueryBuilder(this);
   }
 
-  public contractToContract(): DataApiLastOrAggregateQueryBuilder {
+  public contractToContract(): DataApiFirstLastOrAggregateQueryBuilder {
     this.addToPath({ name: 'contractToContract', args: [], hasQuery: true });
-    return new DataApiLastOrAggregateQueryBuilder(this);
+    return new DataApiFirstLastOrAggregateQueryBuilder(this);
   }
 }

@@ -1,5 +1,5 @@
 import { EsdtType } from '../entities';
-import { DataApiBaseQueryBuilder, DataApiLastOrAggregateQueryBuilder } from './internal';
+import { DataApiBaseQueryBuilder, DataApiFirstLastOrAggregateQueryBuilder } from './internal';
 
 export class DataApiESDTsQueryBuilder extends DataApiBaseQueryBuilder {
   constructor() {
@@ -7,7 +7,7 @@ export class DataApiESDTsQueryBuilder extends DataApiBaseQueryBuilder {
     this.addToPath({ name: 'esdts', args: [] });
   }
 
-  public count(esdtType: EsdtType): DataApiLastOrAggregateQueryBuilder {
+  public count(esdtType: EsdtType): DataApiFirstLastOrAggregateQueryBuilder {
     this.addToPath({
       name: 'count',
       args: [
@@ -15,10 +15,10 @@ export class DataApiESDTsQueryBuilder extends DataApiBaseQueryBuilder {
       ],
       hasQuery: true,
     });
-    return new DataApiLastOrAggregateQueryBuilder(this);
+    return new DataApiFirstLastOrAggregateQueryBuilder(this);
   }
 
-  public count24h(esdtType: EsdtType): DataApiLastOrAggregateQueryBuilder {
+  public count24h(esdtType: EsdtType): DataApiFirstLastOrAggregateQueryBuilder {
     this.addToPath({
       name: 'count24h',
       args: [
@@ -26,6 +26,6 @@ export class DataApiESDTsQueryBuilder extends DataApiBaseQueryBuilder {
       ],
       hasQuery: true,
     });
-    return new DataApiLastOrAggregateQueryBuilder(this);
+    return new DataApiFirstLastOrAggregateQueryBuilder(this);
   }
 }

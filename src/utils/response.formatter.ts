@@ -1,5 +1,5 @@
 import moment from 'moment';
-import { DataApiAggregateResponse, DataApiHistoricalResponse, DataApiLastResponse } from '../responses';
+import { DataApiAggregateResponse, DataApiHistoricalResponse, DataApiValueResponse } from '../responses';
 
 export class DataApiResponseFormatter {
   public static formatResponse(responsePath: string[], response: any): any {
@@ -12,7 +12,7 @@ export class DataApiResponseFormatter {
     return response;
   }
 
-  public static buildLastResponse(response: any): DataApiLastResponse | undefined {
+  public static buildFirstOrLastResponse(response: any): DataApiValueResponse | undefined {
     if (response === undefined) {
       return undefined;
     }
@@ -21,9 +21,12 @@ export class DataApiResponseFormatter {
       return undefined;
     }
 
-    // TODO handle null last
+    // TODO handle null values
+    const first = response[0].first?.toString();
+    const last = response[0].last?.toString();
+
     return {
-      value: response[0].last.toString(),
+      value: last ?? first,
       timestamp: moment(response[0].time).unix(),
     };
   }

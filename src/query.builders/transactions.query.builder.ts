@@ -1,4 +1,4 @@
-import { DataApiBaseQueryBuilder, DataApiLastOrAggregateQueryBuilder } from './internal';
+import { DataApiBaseQueryBuilder, DataApiFirstLastOrAggregateQueryBuilder } from './internal';
 
 export class DataApiTransactionsQueryBuilder extends DataApiBaseQueryBuilder {
   constructor() {
@@ -6,8 +6,8 @@ export class DataApiTransactionsQueryBuilder extends DataApiBaseQueryBuilder {
     this.addToPath({ name: 'transactions', args: [] });
   }
 
-  public dailyFeesCaptured(): DataApiLastOrAggregateQueryBuilder {
+  public dailyFeesCaptured(): DataApiFirstLastOrAggregateQueryBuilder {
     this.addToPath({ name: 'dailyFeesCaptured', args: [], hasQuery: true });
-    return new DataApiLastOrAggregateQueryBuilder(this);
+    return new DataApiFirstLastOrAggregateQueryBuilder(this);
   }
 }

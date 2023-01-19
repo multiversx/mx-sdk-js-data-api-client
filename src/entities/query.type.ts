@@ -1,5 +1,5 @@
 export enum DataApiQueryType {
-  LAST = 'LAST',
+  FIRST_OR_LAST = 'FIRST_OR_LAST',
   AGGREGATE = 'AGGREGATE',
   HISTORICAL = 'HISTORICAL',
 }

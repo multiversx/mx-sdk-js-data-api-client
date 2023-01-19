@@ -1,4 +1,4 @@
-import { DataApiBaseQueryBuilder, DataApiLastOrAggregateQueryBuilder } from './internal';
+import { DataApiBaseQueryBuilder, DataApiFirstLastOrAggregateQueryBuilder } from './internal';
 
 export class DataApiStakingQueryBuilder extends DataApiBaseQueryBuilder {
   constructor() {
@@ -6,13 +6,13 @@ export class DataApiStakingQueryBuilder extends DataApiBaseQueryBuilder {
     this.addToPath({ name: 'staking', args: [] });
   }
 
-  public lockedAmount(): DataApiLastOrAggregateQueryBuilder {
+  public lockedAmount(): DataApiFirstLastOrAggregateQueryBuilder {
     this.addToPath({ name: 'lockedAmount', args: [], hasQuery: true });
-    return new DataApiLastOrAggregateQueryBuilder(this);
+    return new DataApiFirstLastOrAggregateQueryBuilder(this);
   }
 
-  public lockedAmount24h(): DataApiLastOrAggregateQueryBuilder {
+  public lockedAmount24h(): DataApiFirstLastOrAggregateQueryBuilder {
     this.addToPath({ name: 'lockedAmount24h', args: [], hasQuery: true });
-    return new DataApiLastOrAggregateQueryBuilder(this);
+    return new DataApiFirstLastOrAggregateQueryBuilder(this);
   }
 }

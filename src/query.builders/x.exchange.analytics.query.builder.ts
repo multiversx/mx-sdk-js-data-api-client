@@ -1,4 +1,4 @@
-import { DataApiBaseQueryBuilder, DataApiLastOrAggregateQueryBuilder } from './internal';
+import { DataApiBaseQueryBuilder, DataApiFirstLastOrAggregateQueryBuilder } from './internal';
 
 export class DataApiXExchangeAnalyticsQueryBuilder extends DataApiBaseQueryBuilder {
   constructor() {
@@ -6,7 +6,7 @@ export class DataApiXExchangeAnalyticsQueryBuilder extends DataApiBaseQueryBuild
     this.addToPath({ name: 'xExchangeAnalytics', args: [] });
   }
 
-  public metric(series: string, key: string): DataApiLastOrAggregateQueryBuilder {
+  public metric(series: string, key: string): DataApiFirstLastOrAggregateQueryBuilder {
     this.addToPath({
       name: 'metric',
       args: [
@@ -15,6 +15,6 @@ export class DataApiXExchangeAnalyticsQueryBuilder extends DataApiBaseQueryBuild
       ],
       hasQuery: true,
     });
-    return new DataApiLastOrAggregateQueryBuilder(this);
+    return new DataApiFirstLastOrAggregateQueryBuilder(this);
   }
 }

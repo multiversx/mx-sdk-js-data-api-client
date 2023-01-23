@@ -1,5 +1,5 @@
 import { DataApiQueryType, TimeRange } from '../../entities';
-import { DataApiFirstOrLastQuery } from '../../queries';
+import { DataApiValueQuery } from '../../queries';
 import { HistoricalValue } from '../../values';
 import { DataApiAggregateOrHistoricalQueryBuilder } from './aggregate.or.historical.query.builder';
 import { DataApiBaseQueryBuilder } from './base.query.builder';
@@ -10,12 +10,12 @@ export class DataApiFirstLastOrAggregateQueryBuilder extends DataApiBaseQueryBui
     this.copyProps(query);
   }
 
-  public getLast(): DataApiFirstOrLastQuery {
+  public getLast(): DataApiValueQuery {
     this.addValues(HistoricalValue.last, HistoricalValue.time);
     return this.buildQuery(DataApiQueryType.FIRST_OR_LAST);
   }
 
-  public getFirst(): DataApiFirstOrLastQuery {
+  public getFirst(): DataApiValueQuery {
     this.addValues(HistoricalValue.first, HistoricalValue.time);
     return this.buildQuery(DataApiQueryType.FIRST_OR_LAST);
   }

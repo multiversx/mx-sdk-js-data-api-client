@@ -1,8 +1,8 @@
 import { DataApiBaseQuery } from './base.query';
 import { DataApiQueryType } from '../entities';
 
-export class DataApiFirstOrLastQuery extends DataApiBaseQuery {
+export class DataApiLatestQuoteQuery extends DataApiBaseQuery {
   constructor(query: string, variables: any, responsePath: string[]) {
-    super(DataApiQueryType.FIRST_OR_LAST, query, variables, responsePath);
+    super(DataApiQueryType.LATEST_QUOTE, query, variables, responsePath);
   }
 }

@@ -2,8 +2,9 @@ import axios, { AxiosRequestConfig } from 'axios';
 import Agent, { HttpsAgent } from 'agentkeepalive';
 import { NativeAuthSigner, DataApiResponseFormatter, AccessToken } from './utils';
 import { DataApiAggregateResponse, DataApiHistoricalResponse, DataApiValueResponse } from './responses';
-import { DataApiAggregateQuery, DataApiHistoricalQuery, DataApiFirstOrLastQuery, DataApiBaseQuery } from './queries';
+import { DataApiAggregateQuery, DataApiHistoricalQuery, DataApiBaseQuery, DataApiLatestQuoteQuery } from './queries';
 import { DataApiClientConfig } from './entities';
+import { DataApiValueQuery } from './queries/value.query';
 
 export class DataApiClient {
   private url!: string;
@@ -14,9 +15,9 @@ export class DataApiClient {
     this.initialize(config);
   }
 
-  public async executeValueQuery(query: DataApiFirstOrLastQuery): Promise<DataApiValueResponse | undefined> {
+  public async executeValueQuery(query: DataApiValueQuery | DataApiLatestQuoteQuery): Promise<DataApiValueResponse | undefined> {
     return await this.executeQuery(query)
-      .then(DataApiResponseFormatter.buildFirstOrLastResponse);
+      .then((res) => DataApiResponseFormatter.buildValueResponse(query.type, res));
   }
 
   public async executeAggregateQuery(query: DataApiAggregateQuery): Promise<DataApiAggregateResponse | undefined> {

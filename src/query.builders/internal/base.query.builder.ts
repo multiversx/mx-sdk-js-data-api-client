@@ -33,7 +33,7 @@ export class QueryInput {
 export class DataApiBaseQueryBuilder {
   private path: DataApiQueryPath[] = [];
   private queryInput?: QueryInput;
-  private values: (HistoricalValue | AggregateValue)[] = [];
+  private values: (HistoricalValue | AggregateValue | string)[] = [];
 
   protected addToPath(path: DataApiQueryPath) {
     this.path.push(path);
@@ -47,7 +47,7 @@ export class DataApiBaseQueryBuilder {
     this.queryInput[key] = value;
   }
 
-  protected addValues(...values: (HistoricalValue | AggregateValue)[]) {
+  protected addValues(...values: (HistoricalValue | AggregateValue | string)[]) {
     this.values.push(...values);
   }
 
@@ -98,7 +98,7 @@ export class DataApiBaseQueryBuilder {
     return new DataApiBaseQuery(queryType, query, variables, responsePath);
   }
 
-  private addQueryValues(query: string, values: (HistoricalValue | AggregateValue)[]) {
+  private addQueryValues(query: string, values: (HistoricalValue | AggregateValue | string)[]) {
     return query.replace(QUERY_PLACEHOLDER, [...new Set(values)].join());
   }
 }

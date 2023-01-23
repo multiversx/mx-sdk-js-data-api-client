@@ -18,3 +18,12 @@ export enum HistoricalValue {
   avg= 'avg',
   time = 'time'
 }
+
+export enum LatestQuoteValue {
+  price= 'price',
+  change24h= 'change_24h',
+  circulatingSupply= 'circulating_supply',
+  marketCap= 'market_cap',
+  volume24h= 'volume_24h',
+  time = 'timestamp'
+}

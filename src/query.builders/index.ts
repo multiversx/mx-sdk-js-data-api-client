@@ -4,6 +4,7 @@ export * from './esdts.query.builder';
 export * from './network.query.builder';
 export * from './nfts.query.builder';
 export * from './quotes.query.builder';
+export * from './scresults.query.builder';
 export * from './staking.query.builder';
 export * from './tokens.query.builder';
 export * from './transactions.query.builder';

@@ -1,9 +1,9 @@
 import { DataApiBaseQueryBuilder, DataApiFirstLastOrAggregateQueryBuilder } from './internal';
 
-export class DataApiTransactionsQueryBuilder extends DataApiBaseQueryBuilder {
+export class DataApiScResultsQueryBuilder extends DataApiBaseQueryBuilder {
   constructor() {
     super();
-    this.addToPath({ name: 'transactions', args: [] });
+    this.addToPath({ name: 'scresults', args: [] });
   }
 
   public count(): DataApiFirstLastOrAggregateQueryBuilder {
@@ -12,12 +12,7 @@ export class DataApiTransactionsQueryBuilder extends DataApiBaseQueryBuilder {
   }
 
   public count24h(): DataApiFirstLastOrAggregateQueryBuilder {
-    this.addToPath({ name: 'count_24h', args: [], hasQuery: true });
-    return new DataApiFirstLastOrAggregateQueryBuilder(this);
-  }
-
-  public dailyFeesCaptured(): DataApiFirstLastOrAggregateQueryBuilder {
-    this.addToPath({ name: 'dailyFeesCaptured', args: [], hasQuery: true });
+    this.addToPath({ name: 'count24h', args: [], hasQuery: true });
     return new DataApiFirstLastOrAggregateQueryBuilder(this);
   }
 }

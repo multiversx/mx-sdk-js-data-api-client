@@ -1,4 +1,4 @@
-import { DataApiBaseQueryBuilder, DataApiFirstLastOrAggregateQueryBuilder } from './internal';
+import { DataApiBaseQueryBuilder, DataApiFirstLastOrAggregateQueryBuilder, DataApiMostUsedQueryBuilder } from './internal';
 
 export class DataApiTokensQueryBuilder extends DataApiBaseQueryBuilder {
   constructor() {
@@ -9,5 +9,16 @@ export class DataApiTokensQueryBuilder extends DataApiBaseQueryBuilder {
   public dailyNumberOfTokenTransfers(): DataApiFirstLastOrAggregateQueryBuilder {
     this.addToPath({ name: 'dailyNumberOfTokenTransfers', args: [], hasQuery: true });
     return new DataApiFirstLastOrAggregateQueryBuilder(this);
+  }
+
+  public dailyMostUsed(top: number): DataApiMostUsedQueryBuilder {
+    this.addToPath({
+      name: 'dailyMostUsed',
+      args: [
+        { name: 'top', type: 'Int!', value: top },
+      ],
+      hasQuery: true,
+    });
+    return new DataApiMostUsedQueryBuilder(this);
   }
 }

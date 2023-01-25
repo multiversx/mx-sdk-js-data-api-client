@@ -1,6 +1,6 @@
 import moment from 'moment';
 import { DataApiQueryType } from '../entities';
-import { DataApiAggregateResponse, DataApiHistoricalResponse, DataApiValueResponse } from '../responses';
+import { DataApiAggregateResponse, DataApiHistoricalResponse, DataApiMostUsedResponse, DataApiValueResponse } from '../responses';
 
 export class DataApiResponseFormatter {
   public static formatResponse(responsePath: string[], response: any): any {
@@ -92,6 +92,18 @@ export class DataApiResponseFormatter {
       sum: res.sum,
       avg: res.avg,
       timestamp: moment(res.time).unix(),
+    }));
+  }
+
+  public static buildMostUsedResponse(response: any): DataApiMostUsedResponse[] {
+    if (response === undefined) {
+      return [];
+    }
+
+    return response.map((res: any) => ({
+      rank: res.rank,
+      key: res.key,
+      value: res.value,
     }));
   }
 }

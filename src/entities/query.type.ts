@@ -3,4 +3,5 @@ export enum DataApiQueryType {
   AGGREGATE = 'AGGREGATE',
   HISTORICAL = 'HISTORICAL',
   LATEST_QUOTE = 'LATEST_QUOTE',
+  MOST_USED = 'MOST_USED',
 }

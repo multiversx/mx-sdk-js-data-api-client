@@ -27,3 +27,9 @@ export enum LatestQuoteValue {
   volume24h= 'volume_24h',
   time = 'timestamp'
 }
+
+export enum MostUsedValue {
+  rank = 'rank',
+  key = 'key',
+  value = 'value',
+}

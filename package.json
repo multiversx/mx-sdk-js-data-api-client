@@ -1,6 +1,6 @@
 {
   "name": "@multiversx/sdk-data-api-client",
-  "version": "0.5.1",
+  "version": "0.5.2",
   "description": "MultiversX Data API client",
   "main": "lib/src/index.js",
   "types": "lib/src/index.d.ts",

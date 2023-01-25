@@ -6,6 +6,7 @@ import {
   DataApiNetworkQueryBuilder,
   DataApiNFTsQueryBuilder,
   DataApiQuotesQueryBuilder,
+  DataApiScResultsQueryBuilder,
   DataApiStakingQueryBuilder,
   DataApiTokensQueryBuilder,
   DataApiTransactionsQueryBuilder,
@@ -38,6 +39,10 @@ export class DataApiQueryBuilder extends DataApiBaseQuery {
 
   static createQuotesQuery(): DataApiQuotesQueryBuilder {
     return new DataApiQuotesQueryBuilder();
+  }
+
+  static createScResultsQuery(): DataApiScResultsQueryBuilder {
+    return new DataApiScResultsQueryBuilder();
   }
 
   static createStakingQuery(): DataApiStakingQueryBuilder {

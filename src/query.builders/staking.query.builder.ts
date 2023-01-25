@@ -6,6 +6,12 @@ export class DataApiStakingQueryBuilder extends DataApiBaseQueryBuilder {
     this.addToPath({ name: 'staking', args: [] });
   }
 
+  public totalValue(): DataApiFirstLastOrAggregateQueryBuilder {
+    this.addToPath({ name: 'total', args: [], hasQuery: false });
+    this.addToPath({ name: 'value', args: [], hasQuery: true });
+    return new DataApiFirstLastOrAggregateQueryBuilder(this);
+  }
+
   public lockedAmount(): DataApiFirstLastOrAggregateQueryBuilder {
     this.addToPath({ name: 'lockedAmount', args: [], hasQuery: true });
     return new DataApiFirstLastOrAggregateQueryBuilder(this);

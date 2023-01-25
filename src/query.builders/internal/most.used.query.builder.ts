@@ -9,6 +9,11 @@ export class DataApiMostUsedQueryBuilder extends DataApiBaseQueryBuilder {
     this.copyProps(query);
   }
 
+  public fromDate(date: Date): DataApiMostUsedQueryBuilder {
+    this.addOption('date', date);
+    return this;
+  }
+
   public getValues(): DataApiMostUsedQuery {
     this.addValues(MostUsedValue.rank, MostUsedValue.key, MostUsedValue.value);
     return this.buildQuery(DataApiQueryType.MOST_USED);

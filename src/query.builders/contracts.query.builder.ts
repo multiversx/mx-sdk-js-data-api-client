@@ -1,4 +1,3 @@
-import moment from 'moment';
 import { DataApiBaseQueryBuilder, DataApiFirstLastOrAggregateQueryBuilder, DataApiMostUsedQueryBuilder } from './internal';
 
 export class DataApiContractsQueryBuilder extends DataApiBaseQueryBuilder {
@@ -17,14 +16,13 @@ export class DataApiContractsQueryBuilder extends DataApiBaseQueryBuilder {
     return new DataApiFirstLastOrAggregateQueryBuilder(this);
   }
 
-  public dailyMostUsed(top: number, date: Date): DataApiMostUsedQueryBuilder {
+  public dailyMostUsed(top: number): DataApiMostUsedQueryBuilder {
     this.addToPath({
       name: 'dailyMostUsed',
       args: [
         { name: 'top', type: 'Int!', value: top },
-        { name: 'date', type: 'DateTime', value: moment(date).format('yyyy-MM-DD HH:mm:ss') },
       ],
-      hasQuery: false,
+      hasQuery: true,
     });
     return new DataApiMostUsedQueryBuilder(this);
   }

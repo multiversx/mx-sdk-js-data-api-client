@@ -20,4 +20,9 @@ export class DataApiAccountsQueryBuilder extends DataApiBaseQueryBuilder {
     this.addToPath({ name: 'dailyNumberOfActiveAccounts', args: [], hasQuery: true });
     return new DataApiFirstLastOrAggregateQueryBuilder(this);
   }
+
+  public activeAccounts24h(): DataApiFirstLastOrAggregateQueryBuilder {
+    this.addToPath({ name: 'activeAccounts24h', args: [], hasQuery: true });
+    return new DataApiFirstLastOrAggregateQueryBuilder(this);
+  }
 }

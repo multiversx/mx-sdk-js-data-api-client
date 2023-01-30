@@ -16,6 +16,11 @@ export class DataApiNFTsQueryBuilder extends DataApiBaseQueryBuilder {
     return new DataApiFirstLastOrAggregateQueryBuilder(this);
   }
 
+  public transfers(): DataApiFirstLastOrAggregateQueryBuilder {
+    this.addToPath({ name: 'transfers', args: [], hasQuery: true });
+    return new DataApiFirstLastOrAggregateQueryBuilder(this);
+  }
+
   public dailyMostUsed(top: number): DataApiMostUsedQueryBuilder {
     this.addToPath({
       name: 'dailyMostUsed',

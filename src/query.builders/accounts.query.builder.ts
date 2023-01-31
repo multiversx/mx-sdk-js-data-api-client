@@ -1,3 +1,4 @@
+import { BalanceFilter } from 'src/entities';
 import { DataApiBaseQueryBuilder, DataApiFirstLastOrAggregateQueryBuilder } from './internal';
 
 export class DataApiAccountsQueryBuilder extends DataApiBaseQueryBuilder {
@@ -13,6 +14,12 @@ export class DataApiAccountsQueryBuilder extends DataApiBaseQueryBuilder {
 
   public count24h(): DataApiFirstLastOrAggregateQueryBuilder {
     this.addToPath({ name: 'count24h', args: [], hasQuery: true });
+    return new DataApiFirstLastOrAggregateQueryBuilder(this);
+  }
+
+  public countWithBalance(filter: BalanceFilter):  DataApiFirstLastOrAggregateQueryBuilder {
+    this.addToPath({ name: 'balance', args: [], hasQuery: false });
+    this.addToPath({ name: `count_${filter}`, args: [], hasQuery: true });
     return new DataApiFirstLastOrAggregateQueryBuilder(this);
   }
 

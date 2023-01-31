@@ -5,4 +5,5 @@ export * from './values';
 export * from './entities/esdt.type';
 export * from './entities/time.range';
 export * from './entities/time.resolution';
+export * from './entities/balance.filter';
 export * from './utils/native.auth/access.token';

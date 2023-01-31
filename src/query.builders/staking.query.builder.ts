@@ -17,6 +17,30 @@ export class DataApiStakingQueryBuilder extends DataApiBaseQueryBuilder {
     this.addToPath({ name: 'users', args: [], hasQuery: true });
     return new DataApiFirstLastOrAggregateQueryBuilder(this);
   }
+  
+  public activeValue(): DataApiFirstLastOrAggregateQueryBuilder {
+    this.addToPath({ name: 'staking', args: [], hasQuery: false });
+    this.addToPath({ name: 'value', args: [], hasQuery: true });
+    return new DataApiFirstLastOrAggregateQueryBuilder(this);
+  }
+
+  public activeUsers(): DataApiFirstLastOrAggregateQueryBuilder {
+    this.addToPath({ name: 'staking', args: [], hasQuery: false });
+    this.addToPath({ name: 'users', args: [], hasQuery: true });
+    return new DataApiFirstLastOrAggregateQueryBuilder(this);
+  }
+
+  public legacyDelegationValue(): DataApiFirstLastOrAggregateQueryBuilder {
+    this.addToPath({ name: 'legacy_delegation', args: [], hasQuery: false });
+    this.addToPath({ name: 'value', args: [], hasQuery: true });
+    return new DataApiFirstLastOrAggregateQueryBuilder(this);
+  }
+
+  public legacyDelegationUsers(): DataApiFirstLastOrAggregateQueryBuilder {
+    this.addToPath({ name: 'legacy_delegation', args: [], hasQuery: false });
+    this.addToPath({ name: 'users', args: [], hasQuery: true });
+    return new DataApiFirstLastOrAggregateQueryBuilder(this);
+  }
 
   public lockedAmount(): DataApiFirstLastOrAggregateQueryBuilder {
     this.addToPath({ name: 'lockedAmount', args: [], hasQuery: true });

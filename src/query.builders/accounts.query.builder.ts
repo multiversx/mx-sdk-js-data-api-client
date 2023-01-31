@@ -1,4 +1,4 @@
-import { BalanceFilter } from 'src/entities';
+import { BalanceFilter } from '../entities';
 import { DataApiBaseQueryBuilder, DataApiFirstLastOrAggregateQueryBuilder } from './internal';
 
 export class DataApiAccountsQueryBuilder extends DataApiBaseQueryBuilder {

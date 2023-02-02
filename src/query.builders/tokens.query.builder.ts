@@ -22,13 +22,14 @@ export class DataApiTokensQueryBuilder extends DataApiBaseQueryBuilder {
     return new DataApiMostUsedQueryBuilder(this);
   }
 
-  public mostUsed24h(top: number): DataApiMostUsedQueryBuilder {
+  public mostUsed24h(top: number, onlyVerified: boolean = false): DataApiMostUsedQueryBuilder {
     this.addToPath({
       name: 'mostUsed24h',
       args: [
         { name: 'top', type: 'Int!', value: top },
+        { name: 'onlyVerified', type: 'Boolean', value: onlyVerified },
       ],
-      hasQuery: true,
+      hasQuery: false,
     });
     return new DataApiMostUsedQueryBuilder(this);
   }

@@ -9,6 +9,7 @@ import {
   DataApiScResultsQueryBuilder,
   DataApiStakingQueryBuilder,
   DataApiTokensQueryBuilder,
+  DataApiTradingQueryBuilder,
   DataApiTransactionsQueryBuilder,
   DataApiTransfersQueryBuilder,
   DataApiXExchangeAnalyticsQueryBuilder,
@@ -51,6 +52,10 @@ export class DataApiQueryBuilder extends DataApiBaseQuery {
 
   static createTokensQuery(): DataApiTokensQueryBuilder {
     return new DataApiTokensQueryBuilder();
+  }
+
+  static createTradingQuery(): DataApiTradingQueryBuilder {
+    return new DataApiTradingQueryBuilder();
   }
 
   static createTransactionsQuery(): DataApiTransactionsQueryBuilder {

@@ -7,6 +7,7 @@ export * from './quotes.query.builder';
 export * from './scresults.query.builder';
 export * from './staking.query.builder';
 export * from './tokens.query.builder';
+export * from './trading.query.builder';
 export * from './transactions.query.builder';
 export * from './transfers.query.builder';
 export * from './x.exchange.analytics.query.builder';

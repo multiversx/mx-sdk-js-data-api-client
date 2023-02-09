@@ -33,3 +33,10 @@ export enum MostUsedValue {
   key = 'key',
   value = 'value',
 }
+
+export enum TradingPairsValue {
+  address = 'address',
+  state = 'state',
+  firstToken = 'first_token { identifier, name, decimals }',
+  secondToken = 'second_token { identifier, name, decimals }',
+}

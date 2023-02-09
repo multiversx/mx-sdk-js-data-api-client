@@ -1,5 +1,6 @@
 export * from './client.config';
 export * from './esdt.type';
+export * from './esdt.token';
 export * from './fill.data.gaps.options';
 export * from './query.path';
 export * from './query.type';

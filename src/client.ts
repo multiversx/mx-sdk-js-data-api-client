@@ -1,8 +1,8 @@
 import axios, { AxiosRequestConfig } from 'axios';
 import Agent, { HttpsAgent } from 'agentkeepalive';
 import { NativeAuthSigner, DataApiResponseFormatter, AccessToken } from './utils';
-import { DataApiAggregateResponse, DataApiHistoricalResponse, DataApiMostUsedResponse, DataApiValueResponse } from './responses';
-import { DataApiAggregateQuery, DataApiHistoricalQuery, DataApiBaseQuery, DataApiLatestQuoteQuery, DataApiMostUsedQuery } from './queries';
+import { DataApiAggregateResponse, DataApiHistoricalResponse, DataApiMostUsedResponse, DataApiTradingPairsResponse, DataApiValueResponse } from './responses';
+import { DataApiAggregateQuery, DataApiHistoricalQuery, DataApiBaseQuery, DataApiLatestQuoteQuery, DataApiMostUsedQuery, DataApiTradingPairsQuery } from './queries';
 import { DataApiClientConfig } from './entities';
 import { DataApiValueQuery } from './queries/value.query';
 
@@ -33,6 +33,11 @@ export class DataApiClient {
   public async executeMostUsedQuery(query: DataApiMostUsedQuery): Promise<DataApiMostUsedResponse[]> {
     return await this.executeQuery(query)
       .then(DataApiResponseFormatter.buildMostUsedResponse);
+  }
+
+  public async executeTradingPairsQuery(query: DataApiTradingPairsQuery): Promise<DataApiTradingPairsResponse[]> {
+    return await this.executeQuery(query)
+      .then(DataApiResponseFormatter.buildTradingPairsResponse);
   }
 
   private async executeQuery(query: DataApiBaseQuery): Promise<DataApiValueResponse | DataApiAggregateResponse | DataApiHistoricalResponse[] | undefined> {

@@ -39,6 +39,15 @@ export class DataApiBaseQueryBuilder {
     this.path.push(path);
   }
 
+  protected addPathArgs(name: string, args: { name: string, type: string, value: any }[]) {
+    const path = this.path.find((p) => p.name === name);
+    if(!path) {
+      throw new Error(`Path ${name} not found`);
+    }
+
+    path.args.push(...args);
+  }
+
   protected addOption<T>(key: string, value: T) {
     if (this.queryInput === undefined) {
       this.queryInput = new QueryInput();

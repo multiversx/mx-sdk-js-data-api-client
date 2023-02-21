@@ -29,8 +29,11 @@ export class DataApiPortfolioQueryBuilder extends DataApiBaseQueryBuilder {
   }
 
   public getValues(): DataApiPortfolioQuery {
-    // TODO
-    console.log(this.address, this.token, this.source);
+    this.addPathArgs('value', [
+      { name: 'address', type: 'String!', value: this.address },
+      { name: 'token', type: 'String', value: this.token },
+      { name: 'source', type: 'DataSource', value: this.source },
+    ]);
     this.addValues('time', 'token', 'source', 'value');
     return this.buildQuery(DataApiQueryType.PORTFOLIO);
   }

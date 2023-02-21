@@ -86,6 +86,7 @@ export class DataApiResponseFormatter {
     if (response === undefined) {
       return [];
     }
+
     return response.map((res: any) => ({
       first: res.first,
       last: res.last,
@@ -128,6 +129,11 @@ export class DataApiResponseFormatter {
       return [];
     }
 
-    return [];
+    return response.map((res: any) => ({
+      timestamp: moment(res.time).unix(),
+      token: res.token,
+      source: res.source,
+      value: res.value,
+    } as DataApiPortfolioResponse));
   }
 }

@@ -1,7 +1,7 @@
 import { DataSource } from '../entities';
 
 export interface DataApiPortfolioResponse {
-  time: string;
+  timestamp: number;
   token: string;
   source: DataSource;
   value: string;

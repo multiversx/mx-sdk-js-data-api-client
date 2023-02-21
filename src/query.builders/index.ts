@@ -3,6 +3,7 @@ export * from './contracts.query.builder';
 export * from './esdts.query.builder';
 export * from './network.query.builder';
 export * from './nfts.query.builder';
+export * from './portfolio.query.builder';
 export * from './quotes.query.builder';
 export * from './scresults.query.builder';
 export * from './staking.query.builder';

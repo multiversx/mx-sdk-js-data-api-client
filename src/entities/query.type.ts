@@ -5,4 +5,5 @@ export enum DataApiQueryType {
   LATEST_QUOTE = 'LATEST_QUOTE',
   MOST_USED = 'MOST_USED',
   TRADING_PAIRS = 'TRADING_PAIRS',
+  PORTFOLIO = 'PORTFOLIO',
 }

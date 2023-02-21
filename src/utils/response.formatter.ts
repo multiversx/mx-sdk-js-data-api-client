@@ -1,8 +1,8 @@
 import moment from 'moment';
 import { DataApiQueryType } from '../entities';
 import {
-  DataApiAggregateResponse, DataApiHistoricalResponse, DataApiMostUsedResponse, DataApiTradingPairsResponse,
-  DataApiValueResponse,
+  DataApiAggregateResponse, DataApiHistoricalResponse, DataApiMostUsedResponse, DataApiPortfolioResponse,
+  DataApiTradingPairsResponse, DataApiValueResponse,
 } from '../responses';
 
 export class DataApiResponseFormatter {
@@ -121,5 +121,13 @@ export class DataApiResponseFormatter {
       firstToken: res.first_token,
       secondToken: res.second_token,
     } as DataApiTradingPairsResponse));
+  }
+
+  public static buildPortfolioResponse(response: any): DataApiPortfolioResponse[] {
+    if (response === undefined) {
+      return [];
+    }
+
+    return [];
   }
 }

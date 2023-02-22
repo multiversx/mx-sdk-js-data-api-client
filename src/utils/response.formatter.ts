@@ -132,7 +132,6 @@ export class DataApiResponseFormatter {
     return response.map((res: any) => ({
       timestamp: moment(res.time).unix(),
       token: res.token,
-      source: res.source,
       value: res.value,
     } as DataApiPortfolioResponse));
   }

@@ -3,7 +3,7 @@ import Agent, { HttpsAgent } from 'agentkeepalive';
 import { NativeAuthSigner, DataApiResponseFormatter, AccessToken } from './utils';
 import { DataApiAggregateResponse, DataApiHistoricalResponse, DataApiMostUsedResponse, DataApiPortfolioResponse, DataApiTradingPairsResponse, DataApiValueResponse } from './responses';
 import { DataApiAggregateQuery, DataApiHistoricalQuery, DataApiBaseQuery, DataApiLatestQuoteQuery, DataApiMostUsedQuery, DataApiTradingPairsQuery, DataApiPortfolioQuery } from './queries';
-import { DataApiClientConfig } from './entities';
+import { DataApiClientConfig, DataApiError, NetworkError } from './entities';
 import { DataApiValueQuery } from './queries/value.query';
 
 export class DataApiClient {
@@ -50,28 +50,21 @@ export class DataApiClient {
     return DataApiResponseFormatter.formatResponse(query.responsePath, response);
   }
 
-  public async executeRawQuery(body: { query: string, variables: Record<string, any> }): Promise<any> {
-    try {
-      const response = await this.post(body);
-      return  response;
-    } catch (error) {
-      // TODO format error
-      throw error;
-    }
-  }
-
-  private async post(payload: any): Promise<any> {
+  private async executeRawQuery(body: { query: string, variables: Record<string, any> }): Promise<any> {
     try {
       const config = await this.getConfig();
-      const { data } = await axios.post(this.url, payload, config);
+      const { data } = await axios.post(this.url, body, config);
 
-      if(data.errors) {
-        throw data.errors;
+      if (data.errors) {
+        throw new DataApiError(data.errors);
       }
-      
+
       return data.data;
-    } catch (error) {
-      throw error;
+    } catch (error: DataApiError | any) {
+      if (error instanceof DataApiError) {
+        throw error;
+      }
+      throw new NetworkError(error);
     }
   }
 

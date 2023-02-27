@@ -1,6 +1,7 @@
 export * from './balance.filter';
 export * from './client.config';
 export * from './data.source';
+export * from './errors';
 export * from './esdt.token';
 export * from './esdt.type';
 export * from './fill.data.gaps.options';

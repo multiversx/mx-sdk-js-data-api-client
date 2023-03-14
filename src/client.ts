@@ -5,6 +5,7 @@ import { DataApiAggregateResponse, DataApiHistoricalResponse, DataApiMostUsedRes
 import { DataApiAggregateQuery, DataApiHistoricalQuery, DataApiBaseQuery, DataApiLatestQuoteQuery, DataApiMostUsedQuery, DataApiTradingPairsQuery, DataApiPortfolioQuery } from './queries';
 import { DataApiClientConfig, DataApiError, NetworkError } from './entities';
 import { DataApiValueQuery } from './queries/value.query';
+import { CLIENT_VERSION } from './version';
 
 export class DataApiClient {
   private url!: string;
@@ -88,7 +89,7 @@ export class DataApiClient {
     };
 
     this.nativeAuthSigner = new NativeAuthSigner({
-      host: config.host,
+      origin: config.origin,
       apiUrl: config.multiversXApiUrl,
       signerPrivateKey: config.signerPrivateKey,
     });
@@ -101,6 +102,7 @@ export class DataApiClient {
       ...this.config,
       headers: {
         Authorization: `Bearer ${accessToken.token}`,
+        'X-Data-Api-Client-Version': CLIENT_VERSION,
       },
       validateStatus: function () {
         return true;
